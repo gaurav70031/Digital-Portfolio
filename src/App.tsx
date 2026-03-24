@@ -27,7 +27,6 @@ import {
   Users
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from './constants';
-import profileImg from './profile.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -169,12 +168,9 @@ const Hero = () => {
         >
           <div className="w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative z-10 bg-white border-8 border-white">
             <img 
-              src={profileImg} 
+              src={PORTFOLIO_DATA.profileImage} 
               alt="Profile" 
               className="w-full h-full object-contain transition-all duration-700"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "https://picsum.photos/seed/tech/800/800";
-              }}
               referrerPolicy="no-referrer"
             />
           </div>
@@ -578,14 +574,10 @@ export default function App() {
             <div className="relative">
               <div className="aspect-video rounded-3xl overflow-hidden shadow-xl bg-gray-100">
                 <img 
-                  src="./src/achievement.jpg" 
+                  src="/achievement.jpg" 
                   alt="Gaurav Gunjan receiving achievement award" 
                   className="w-full h-full object-cover object-top"
                   referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    // Fallback if image isn't uploaded yet
-                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop";
-                  }}
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 glass-card p-6 flex items-center space-x-4">
