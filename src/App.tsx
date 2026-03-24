@@ -27,6 +27,7 @@ import {
   Users
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from './constants';
+import achievementImg from './achievement.jpg';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -574,7 +575,7 @@ export default function App() {
             <div className="relative">
               <div className="aspect-video rounded-3xl overflow-hidden shadow-xl bg-gray-100">
                 <img 
-                  src="/achievement.jpg" 
+                  src={achievementImg} 
                   alt="Gaurav Gunjan receiving achievement award" 
                   className="w-full h-full object-cover object-top"
                   referrerPolicy="no-referrer"

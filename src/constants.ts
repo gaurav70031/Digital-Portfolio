@@ -1,3 +1,6 @@
+import resumePdf from './resume.pdf';
+import profileImg from './profile.png';
+
 export const PORTFOLIO_DATA = {
   name: "Gaurav Gunjan",
   title: "Computer Science & Engineering Student",
@@ -6,8 +9,8 @@ export const PORTFOLIO_DATA = {
   phone: "+91 8873598841",
   linkedin: "https://linkedin.com/in/gaurav-gunjan-12b55a269/",
   github: "https://github.com/gaurav70031", // Updated with user's profile link
-  resumeUrl: "/resume.pdf", // Path to your uploaded resume PDF
-  profileImage: "/profile.png", // Path to the uploaded image
+  resumeUrl: resumePdf, // Path to your uploaded resume PDF
+  profileImage: profileImg, // Path to the uploaded image
   formspreeUrl: "https://formspree.io/f/mkoqdykp",
   objective: "Aspiring Computer Science student specializing in Information Security, seeking opportunities to apply skills in cybersecurity and software development and passionate about secure systems design and implementation, with a strong foundation in problem-solving and leadership. Eager to contribute to impactful cybersecurity projects and real-world solutions.",
   education: [
