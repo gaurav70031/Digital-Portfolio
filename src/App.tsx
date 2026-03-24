@@ -288,7 +288,7 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group glass-card overflow-hidden flex flex-col"
+                className={`group glass-card overflow-hidden flex flex-col ${project.title.trim().toLowerCase().includes("umbrella") ? 'border-navy-primary/30 ring-1 ring-navy-primary/10' : ''}`}
               >
               <div className="relative h-48 overflow-hidden">
                 <img 
@@ -307,7 +307,7 @@ const Projects = () => {
                       href={project.github} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="p-2 bg-white/20 backdrop-blur-md rounded-lg text-white hover:bg-white/40 transition-colors"
+                      className={`p-2 backdrop-blur-md rounded-lg text-white transition-colors ${project.title.trim().toLowerCase().includes("umbrella") ? 'bg-navy-primary/40 hover:bg-navy-primary/60' : 'bg-white/20 hover:bg-white/40'}`}
                     >
                       <Github size={18} />
                     </a>
@@ -315,7 +315,7 @@ const Projects = () => {
                       href={project.link} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="p-2 bg-white/20 backdrop-blur-md rounded-lg text-white hover:bg-white/40 transition-colors"
+                      className={`p-2 backdrop-blur-md rounded-lg text-white transition-colors ${project.title.trim().toLowerCase().includes("umbrella") ? 'bg-navy-primary/40 hover:bg-navy-primary/60' : 'bg-white/20 hover:bg-white/40'}`}
                     >
                       <ExternalLink size={18} />
                     </a>
@@ -326,14 +326,14 @@ const Projects = () => {
                 <div className="mb-4 flex items-start justify-between">
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-1">{project.title}</h3>
-                    <p className="text-teal-primary text-sm font-medium">{project.subtitle}</p>
+                    <p className={`${project.title.trim().toLowerCase().includes("umbrella") ? 'text-navy-primary' : 'text-teal-primary'} text-sm font-medium`}>{project.subtitle}</p>
                   </div>
                   {project.title.trim().toLowerCase().includes("umbrella") && (
                     <div className="flex flex-col items-center">
-                      <div className="p-2.5 bg-teal-primary text-white rounded-xl shadow-md shadow-teal-primary/20 flex items-center justify-center">
+                      <div className="p-2.5 bg-navy-primary text-white rounded-xl shadow-md shadow-navy-primary/20 flex items-center justify-center">
                         <Umbrella size={22} strokeWidth={2.5} />
                       </div>
-                      <span className="text-[8px] font-bold text-teal-primary mt-1 uppercase tracking-tighter">Umbrella</span>
+                      <span className="text-[8px] font-bold text-navy-primary mt-1 uppercase tracking-tighter">Umbrella</span>
                     </div>
                   )}
                   {project.title.trim().toLowerCase().includes("farm") && (
@@ -352,7 +352,7 @@ const Projects = () => {
                 </p>
                 <div className="mt-auto flex flex-wrap gap-2">
                   {project.technologies.slice(0, 3).map(tech => (
-                    <span key={tech} className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                    <span key={tech} className={`text-[10px] font-bold uppercase tracking-wider ${project.title.trim().toLowerCase().includes("umbrella") ? 'text-navy-primary/60' : 'text-gray-400'}`}>
                       #{tech.replace(/\s+/g, '')}
                     </span>
                   ))}
@@ -419,16 +419,32 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
+    
+    try {
+      const response = await fetch(PORTFOLIO_DATA.formspreeUrl || '', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formState)
+      });
+
+      if (response.ok) {
+        setIsSent(true);
+        setFormState({ name: '', email: '', message: '' });
+        setTimeout(() => setIsSent(false), 5000);
+      } else {
+        console.error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    } finally {
       setIsSubmitting(false);
-      setIsSent(true);
-      setFormState({ name: '', email: '', message: '' });
-      setTimeout(() => setIsSent(false), 5000);
-    }, 1500);
+    }
   };
 
   return (

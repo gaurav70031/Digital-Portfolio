@@ -3,6 +3,10 @@
 @theme {
   --color-teal-primary: #0d9488;
   --color-teal-secondary: #14b8a6;
+  --color-navy-primary: #1e3a8a;
+  --color-navy-secondary: #1e40af;
+  --color-accent-orange: #f59e0b;
+  --color-accent-green: #10b981;
   --color-gray-light: #f3f4f6;
   --color-gray-dark: #374151;
   

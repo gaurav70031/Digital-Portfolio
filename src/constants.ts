@@ -8,6 +8,7 @@ export const PORTFOLIO_DATA = {
   github: "https://github.com/gaurav70031", // Updated with user's profile link
   resumeUrl: "./src/resume.pdf", // Path to your uploaded resume PDF
   profileImage: "/src/profile.png", // Path to the uploaded image
+  formspreeUrl: "https://formspree.io/f/mkoqdykp",
   objective: "Aspiring Computer Science student specializing in Information Security, seeking opportunities to apply skills in cybersecurity and software development and passionate about secure systems design and implementation, with a strong foundation in problem-solving and leadership. Eager to contribute to impactful cybersecurity projects and real-world solutions.",
   education: [
     {
