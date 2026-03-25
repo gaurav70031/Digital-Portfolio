@@ -27,7 +27,7 @@ import {
   Users
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from './constants';
-import achievementImg from './achievement.jpg';
+const achievementImg = '/achievement.jpg';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
